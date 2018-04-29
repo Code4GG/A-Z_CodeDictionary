@@ -1,16 +1,22 @@
+// Create dependecies
 const router = require("express").Router();
-const booksController = require("../../controllers/booksController");
+const databaseController = require("../../controllers/mothershipController");
 
-// Matches with "/api/books"
-router.route("/")
-  .get(wordsController.findAll)
-  .post(wordsController.create);
+// Route for new user creation
+router.route("/newUser")
+	.post(databaseController.newUser);
 
-// Matches with "/api/books/:id"
-router
-  .route("/:id")
-  .get(wordsController.findById)
-  .put(wordsController.update)
-  .delete(wordsController.remove);
+router.route("/logIn/:username/:password")
+	.get(databaseController.logIn);
+
+router.route("/addWord")
+	.post(databaseController.addWord);
+
+
+router.route("/getEvents/:id")
+	.get(databaseController.getEvents);
+
+router.route("/newEvent")
+	.post(databaseController.newEvent)
 
 module.exports = router;

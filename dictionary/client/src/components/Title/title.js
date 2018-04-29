@@ -58,7 +58,6 @@ class AppBarExampleComposition extends Component {
           title="Code Dictionary"
           iconElementLeft={<IconButton><FontIcon className="material-icons">code</FontIcon></IconButton>}
           iconElementRight={this.state.logged ? <Logged /> : <Login /> }
-          iconClassNameRight={<DatePicker />}
         />
       </div>
     );

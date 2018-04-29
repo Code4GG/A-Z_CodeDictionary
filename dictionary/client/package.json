@@ -9,6 +9,7 @@
     "macos-calendar": "^1.0.5",
     "material-ui": "^0.20.0",
     "mongoose": "^5.0.16",
+    "mysql2": "^1.5.3",
     "react": "^16.3.2",
     "react-autocomplete": "^1.8.1",
     "react-bootstrap": "^0.32.1",
@@ -16,7 +17,8 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "react-swipeable-views": "^0.12.13",
-    "reactstrap": "^5.0.0"
+    "reactstrap": "^5.0.0",
+    "sequelize": "^4.37.6"
   },
   "scripts": {
     "start": "react-scripts start",
