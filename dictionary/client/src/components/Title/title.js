@@ -8,6 +8,7 @@ import Toggle from 'material-ui/Toggle';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FontIcon from 'material-ui/FontIcon';
+import DatePicker from '../Calendar'
 
 class Login extends Component {
   static muiName = 'FlatButton';
@@ -29,7 +30,7 @@ const Logged = (props) => (
     targetOrigin={{horizontal: 'right', vertical: 'top'}}
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
   >
-    <IconButton><FontIcon className="material-icons">today</FontIcon></IconButton>
+    <IconButton><FontIcon  className="material-icons">today</FontIcon></IconButton>
     <MenuItem primaryText="Sign out" />
 
   </IconMenu>
@@ -57,6 +58,7 @@ class AppBarExampleComposition extends Component {
           title="Code Dictionary"
           iconElementLeft={<IconButton><FontIcon className="material-icons">code</FontIcon></IconButton>}
           iconElementRight={this.state.logged ? <Logged /> : <Login /> }
+          iconClassNameRight={<DatePicker />}
         />
       </div>
     );

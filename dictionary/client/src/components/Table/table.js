@@ -11,7 +11,13 @@ import {
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 import RaisedButton from 'material-ui/RaisedButton';
-// import red900 from 'material-ui/styles/colors.js';
+import Autocomplete from 'react-autocomplete'
+import AutoCompleteExampleSimple from '../Search'
+import ButtonToolbar from 'react-bootstrap/lib/Button';
+import Editbutton from '../Editbutton';
+import TabsExampleSwipeable from '../Tabs'
+
+
 
 const styles = {
   propContainer: {
@@ -101,7 +107,8 @@ export default class TableExampleComplex extends Component {
             enableSelectAll={this.state.enableSelectAll}
           >
             <TableRow>
-              <TableHeaderColumn colSpan="3" tooltip="Super Header" style={{textAlign: 'center'}}>
+              <TableHeaderColumn colSpan="3" style={{textAlign: 'center'}}>
+                <AutoCompleteExampleSimple />
                 <RaisedButton label="Add" style={style} />
                 <RaisedButton label="Change" style={style} />
                 <RaisedButton label="Placeholder" style={style} />
@@ -109,6 +116,11 @@ export default class TableExampleComplex extends Component {
                 <RaisedButton label="Placeholder" style={style} />
                 <RaisedButton label="Report" style={style} />
               </TableHeaderColumn>
+            </TableRow>
+            <TableRow>
+            <TableHeaderColumn colSpan="3" style={{textAlign: 'center'}}>
+                <TabsExampleSwipeable />
+            </TableHeaderColumn>
             </TableRow>
             <TableRow>
               <TableHeaderColumn tooltip="Do It">Add your own touch</TableHeaderColumn>
@@ -124,7 +136,7 @@ export default class TableExampleComplex extends Component {
           >
             {tableData.map( (row, index) => (
               <TableRow key={index}>
-                <RaisedButton label="Edit" secondary={true} style={style} />
+                <TableRowColumn><Editbutton /></TableRowColumn>
                 <TableRowColumn>{row.Word}</TableRowColumn>
                 <TableRowColumn>{row.Definition}</TableRowColumn>
               </TableRow>
