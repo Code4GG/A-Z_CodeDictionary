@@ -2,6 +2,7 @@ const Sequelize = require("sequelize");
 const sequelize = require("../config/connection.js");
 const Users = require("./users.js");
 
+module.exports = function(sequelize, datatypes){
 const Words = sequelize.define("words", {
 	word_id : {
 		type: Sequelize.INTEGER,
@@ -9,12 +10,14 @@ const Words = sequelize.define("words", {
 	},
 	word: Sequelize.STRING,
 	definition: Sequelize.STRING
-}, {
-	timestamps: false
-});
+	}, {
+		timestamps: false
+	});
+	return Words;
+}
 
-Words.belongsTo(Users, {foreignKey: "user_id"});
+// Words.belongsTo(Users, {foreignKey: "user_id"});
 
-Words.sync();
+// Words.sync();
 
-module.exports = Words;
+// module.exports = Words;
