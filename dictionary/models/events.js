@@ -3,10 +3,6 @@ const sequelize = require("../config/connection.js");
 
 module.exports = function(sequelize, datatypes){
 const Events = sequelize.define("events", {
-	event_id: {
-		type: datatypes.INTEGER,
-		primaryKey: true
-	},
 	message: datatypes.STRING
 	}, {
 		timestamps: false
@@ -15,6 +11,3 @@ const Events = sequelize.define("events", {
 }
 
 
-// Events.sync();
-
-// module.exports = Events;

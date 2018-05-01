@@ -1,6 +1,6 @@
 const path = require("path");
 const router = require("express").Router();
-const database = require("./api/words");
+const database = require("./api/words.js");
 
 // Router for database communication
 router.use("/api", database);

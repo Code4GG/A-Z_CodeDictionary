@@ -2,20 +2,19 @@ import React, {Component} from 'react';
 import {
   Table,
   TableBody,
-  TableFooter,
   TableHeader,
   TableHeaderColumn,
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
-import Toggle from 'material-ui/Toggle';
 import RaisedButton from 'material-ui/RaisedButton';
 import Autocomplete from 'react-autocomplete'
 import AutoCompleteExampleSimple from '../Search'
 import ButtonToolbar from 'react-bootstrap/lib/Button';
 import Editbutton from '../Editbutton';
 import TabsExampleSwipeable from '../Tabs'
+
 
 
 
@@ -90,6 +89,8 @@ export default class TableExampleComplex extends Component {
   handleChange = (event) => {
     this.setState({height: event.target.value});
   };
+
+
 
   render() {
     return (

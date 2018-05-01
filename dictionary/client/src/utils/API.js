@@ -1,20 +1,37 @@
 import axios from "axios";
+import qs from "qs";
 
 export default {
-  // Gets all books
-  getWords: function() {
-    return axios.get("/api/words");
+  // Create new user route
+  newUser: (username, password) => {
+    const data = {
+      username, 
+      password
+    };
+    
+    return axios.post("/api/newUser", data);
   },
-  // Gets the book with the given id
-  getWord: function(id) {
-    return axios.get("/api/words/" + id);
+
+  // Retrieve user information route
+  logIn: (username, password) => {
+    return axios.get(`/api/logIn/${username}/${password}`);
   },
-  // Deletes the book with the given id
-  deleteWord: function(id) {
-    return axios.delete("/api/words/" + id);
+
+  addWord: (word, definition) => {
+    const data = {
+      word,
+      definition
+    };
+    return axios.post("/api/addWord", data);
   },
-  // Saves a book to the database
-  saveWord: function(bookData) {
-    return axios.post("/api/words", wordData);
+
+  //Get saved jobs by user
+  getEvents: (id) => {
+    return axios.get(`/api/getEvents/${id}`);
+  },
+
+  newEvent: (data) => {
+    return axios.get('/api/newEvent', data);
   }
-};
+}
+

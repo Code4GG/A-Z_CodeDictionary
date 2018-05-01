@@ -4,10 +4,6 @@ const Users = require("./users.js");
 
 module.exports = function(sequelize, datatypes){
 const Words = sequelize.define("words", {
-	word_id : {
-		type: Sequelize.INTEGER,
-		primaryKey: true
-	},
 	word: Sequelize.STRING,
 	definition: Sequelize.STRING
 	}, {

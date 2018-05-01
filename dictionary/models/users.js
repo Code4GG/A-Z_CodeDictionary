@@ -2,17 +2,13 @@ const Sequelize = require("sequelize");
 const sequelize = require("../config/connection.js");
 
 module.exports = function(sequelize, datatypes){
-const Users = sequelize.define("users", {
-	user_id : {
-		type: Sequelize.INTEGER,
-		primaryKey: true
-	},
+const users = sequelize.define("users", {
 	username: Sequelize.STRING,
 	password: Sequelize.STRING
 	}, {
 		timestamps: false
 	});
-	return Users;
+	return users;
 }
 
 // Users.sync();

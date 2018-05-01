@@ -3,7 +3,7 @@ const db = require("../models");
 module.exports = {
 	// Creates new users
 	newUser: function(req, res) {
-		db.Users.create({
+		db.users.create({
 			username: req.body.username,
 			password: req.body.password
 		})
@@ -14,8 +14,8 @@ module.exports = {
 
 	// Retrieves uses based on username and password
 	logIn: function(req, res) {
-		db.Users.findOne({
-			attributes: ["user_id", "username"],
+		db.users.findOne({
+			attributes: ["id", "username"],
 			where: {
 				username: req.params.username,
 				password: req.params.password 
@@ -30,7 +30,6 @@ module.exports = {
 		db.Words.create({
 			word: req.body.word,
 			definition: req.body.definition,
-			user_id: req.body.userId
 		})
 		.then(data => {
 			res.json(data);

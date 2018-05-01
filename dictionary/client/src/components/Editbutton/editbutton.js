@@ -1,47 +1,92 @@
-import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import RaisedButton from 'material-ui/RaisedButton'; 
+import React, { Component } from 'react'
+
+import { Dialog, FlatButton, Tabs, Tab,  TableRow, TableRowColumn } from 'material-ui'
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 const style = {
   margin: 12,
 };
 
-class Editbutton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false
-    };
+export default class Editbutton extends React.Component {
 
-    this.toggle = this.toggle.bind(this);
+  static fields = [{tab1:"edit"}];
+
+  state = {
+    open: false,
   }
 
-  toggle() {
+  handleOpen = (field) => () => {
     this.setState({
-      modal: !this.state.modal
-    });
-    console.log("hello")
+      open: field
+    })
   }
+
+  handleClose = () => {
+    this.setState({
+      open: false
+    })
+  }
+
+  renderRows = (field) => {
+    const { open } = this.state;
+
+    const actions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleClose}
+      />,
+    ];
+
+    return (
+      <TableRow key={field.tab1}>
+        <TableRowColumn>
+          <FlatButton
+          label="Edit"
+          style={this.style}
+          /*icon={<ContentAdd/>}*/
+          onClick={this.handleOpen(field.tab1)}
+          />
+      </TableRowColumn>
+        <Dialog
+          title="Define the word at it's best"
+          actions={actions}
+          modal={false}
+          open={open === field.tab1}
+          onClick={this.handleClose}
+        >
+        <Tabs>
+          <Tab label={field.tab1} >
+            <div>
+              <h2>{field.tab1}</h2>
+              <p>
+                This is one tab.
+              </p>
+            </div>
+          </Tab>
+        </Tabs>
+      </Dialog>
+    </TableRow>);
+  }
+
 
   render() {
+    const rows = Editbutton.fields.map(this.renderRows);
     return (
-      <div>
-        {/*<RaisedButton label="Edit" secondary={true} style={style} onClick={this.toogle} />*/}
-        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}Edit</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-          <ModalBody>
-          Hi
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Save</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
-      </div>
-    );
+      <tbody>
+        {rows}
+      </tbody>
+    )
   }
 }
 
-export default Editbutton;
+
+
 
