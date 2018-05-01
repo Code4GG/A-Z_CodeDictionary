@@ -36,6 +36,13 @@ module.exports = {
 		})
 	},
 
+	getWords: function(req, res) {
+		db.Words.findAll({})
+		.then(data => {
+			res.json(data);
+		})
+	},
+
 	// Retrieves events user ID
 	getEvents: function(req, res) {
 		db.Events.findAll({

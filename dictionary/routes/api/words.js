@@ -12,6 +12,9 @@ router.route("/logIn/:username/:password")
 router.route("/addWord")
 	.post(databaseController.addWord);
 
+router.route("/getWords")
+	.get(databaseController.getWords);
+
 
 router.route("/getEvents/:id")
 	.get(databaseController.getEvents);

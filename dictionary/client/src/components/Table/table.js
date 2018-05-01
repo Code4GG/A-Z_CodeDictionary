@@ -14,6 +14,7 @@ import AutoCompleteExampleSimple from '../Search'
 import ButtonToolbar from 'react-bootstrap/lib/Button';
 import Editbutton from '../Editbutton';
 import TabsExampleSwipeable from '../Tabs'
+import api from "../../utils";
 
 
 
@@ -32,37 +33,6 @@ const style = {
   margin: 12,
 };
 
-const tableData = [
-  {
-    Word: 'Ajax',
-    Definition: 'run it',
-  },
-  {
-    Word: 'Ajax',
-    Definition: 'run it',
-  },
-  {
-    Word: 'Ajax',
-    Definition: 'run it',
-  },
-  {
-    Word: 'Ajax',
-    Definition: 'run it',
-  },
-  {
-    Word: 'Ajax',
-    Definition: 'run it',
-  },
-  {
-    Word: 'Ajax',
-    Definition: 'run it',
-  },
-  {
-    Word: 'Ajax',
-    Definition: 'run it',
-  },
-];
-
 /**
  * A more complex example, allowing the table height to be set, and key boolean properties to be toggled.
  */
@@ -78,7 +48,22 @@ export default class TableExampleComplex extends Component {
     deselectOnClickaway: true,
     showCheckboxes: false,
     height: '300px',
+    choices: [],
+    word: "",
+    definition: ""
   };
+ 
+  componentDidMount() {
+    this.wordDataTable();
+  }
+
+  wordDataTable = () => {
+    api.Database.getWords()
+        .then(res => 
+          this.setState({ choices: res.data.word, word: "", definition: "" })
+          )
+        .catch(err => console.log(err))
+     };
 
   handleToggle = (event, toggled) => {
     this.setState({
@@ -110,7 +95,7 @@ export default class TableExampleComplex extends Component {
             <TableRow>
               <TableHeaderColumn colSpan="3" style={{textAlign: 'center'}}>
                 <AutoCompleteExampleSimple />
-                <RaisedButton label="Add" style={style} />
+                <RaisedButton label="Add" onClick={event => this.wordDataTable(event)} style={style} />
                 <RaisedButton label="Change" style={style} />
                 <RaisedButton label="Placeholder" style={style} />
                 <RaisedButton label="Move" style={style} />
@@ -135,11 +120,11 @@ export default class TableExampleComplex extends Component {
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}
           >
-            {tableData.map( (row, index) => (
+            {wordDataTable.map( (row, index) => (
               <TableRow key={index}>
                 <TableRowColumn><Editbutton /></TableRowColumn>
-                <TableRowColumn>{row.Word}</TableRowColumn>
-                <TableRowColumn>{row.Definition}</TableRowColumn>
+                <TableRowColumn>{choices.word}</TableRowColumn>
+                <TableRowColumn>{choices.definition}</TableRowColumn>
               </TableRow>
               ))}
           </TableBody>
