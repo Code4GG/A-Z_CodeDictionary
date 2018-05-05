@@ -9,6 +9,15 @@ export default class AutoCompleteExampleSimple extends Component {
     dataSource: [],
   };
 
+   // handleFormSubmit = event => {
+   //  event.preventDefault();
+
+   //    api.Database.getWords()
+   //      .then(data => 
+   //    }))
+   //      .catch(err => console.log(err))
+   //   };
+
   handleUpdateInput = (value) => {
     this.setState({
       dataSource: [

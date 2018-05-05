@@ -25,6 +25,10 @@ export default {
     return axios.post("/api/addWord", data);
   },
 
+  getWords: (data) => {
+    return axios.get("/api/getWords", data);
+  },
+
   //Get saved jobs by user
   getEvents: (id) => {
     return axios.get(`/api/getEvents/${id}`);

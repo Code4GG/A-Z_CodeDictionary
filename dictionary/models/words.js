@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config/connection.js");
-const Users = require("./users.js");
+// const Users = require("./users.js");
 
 module.exports = function(sequelize, datatypes){
 const Words = sequelize.define("words", {

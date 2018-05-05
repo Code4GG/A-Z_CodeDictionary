@@ -10,21 +10,12 @@ export default class Form extends React.Component {
   };
 
   change = event => {
-    // this.props.onChange({ [e.target.name]: e.target.value });
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
 
-  // api.Database.newUser(this.state.username, this.state.password)
-  //   .then(data => {
-  //     console.log(res.data);
-  //     this.setState({ 
-  //       username: this.state.username
-  //       password: this.state.password
-  //     })
-  //   });
 
     handleFormSubmit = event => {
     event.preventDefault();
@@ -40,18 +31,6 @@ export default class Form extends React.Component {
      };
 
 
-
-  // onSubmit = event => {
-  //   event.preventDefault();
-  //   // this.props.onSubmit(this.state);
-  //   this.setState({
-  //     firstName: "",
-  //     lastName: "",
-  //     username: "",
-  //     email: "",
-  //     password: ""
-  //   });
-  // };
 
   render() {
     return (

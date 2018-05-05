@@ -14,7 +14,7 @@ import AutoCompleteExampleSimple from '../Search'
 import ButtonToolbar from 'react-bootstrap/lib/Button';
 import Editbutton from '../Editbutton';
 import TabsExampleSwipeable from '../Tabs'
-import api from "../../utils";
+import api from "../../utils/API.js";
 
 
 
@@ -33,6 +33,46 @@ const style = {
   margin: 12,
 };
 
+const tableData = [
+  {
+    Word: '<a>',
+    Definition: 'Defines a hyperlink',
+  },
+  {
+    Word: '<abbr>',
+    Definition: 'Defines an abbreviation or acronym',
+  },
+  {
+    Word: '<address>',
+    Definition: 'Defines contact information for the author',
+  },
+  {
+    Word: '<area>',
+    Definition: 'Defines an area inside an image-map',
+  },
+  {
+    Word: '<article>',
+    Definition: 'Defines an article',
+  },
+  {
+    Word: '<aside>',
+    Definition: 'Defines content aside from the page content',
+  },
+  {
+    Word: '<audio>',
+    Definition: 'Defines sound content',
+  },
+  {
+    Word: '<b>',
+    Definition: 'Defines bold text',
+  },
+  {
+    Word: '<body>',
+    Definition: 'Defines the document/`s body',
+  },
+];
+  
+
 /**
  * A more complex example, allowing the table height to be set, and key boolean properties to be toggled.
  */
@@ -48,22 +88,20 @@ export default class TableExampleComplex extends Component {
     deselectOnClickaway: true,
     showCheckboxes: false,
     height: '300px',
-    choices: [],
-    word: "",
-    definition: ""
   };
- 
-  componentDidMount() {
-    this.wordDataTable();
-  }
 
-  wordDataTable = () => {
-    api.Database.getWords()
-        .then(res => 
-          this.setState({ choices: res.data.word, word: "", definition: "" })
-          )
-        .catch(err => console.log(err))
-     };
+  // componentDidMount(){
+  //   this.loadWords();
+  // }
+
+  // loadWords = () => {
+  //   this.setState({ Words: [] })
+  //   api.getWords()
+  //     .then(data =>
+  //       this.setState({ Words: data.data })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   handleToggle = (event, toggled) => {
     this.setState({
@@ -74,8 +112,6 @@ export default class TableExampleComplex extends Component {
   handleChange = (event) => {
     this.setState({height: event.target.value});
   };
-
-
 
   render() {
     return (
@@ -95,11 +131,9 @@ export default class TableExampleComplex extends Component {
             <TableRow>
               <TableHeaderColumn colSpan="3" style={{textAlign: 'center'}}>
                 <AutoCompleteExampleSimple />
-                <RaisedButton label="Add" onClick={event => this.wordDataTable(event)} style={style} />
-                <RaisedButton label="Change" style={style} />
-                <RaisedButton label="Placeholder" style={style} />
-                <RaisedButton label="Move" style={style} />
-                <RaisedButton label="Placeholder" style={style} />
+                <RaisedButton label="Add" style={style} />
+                <RaisedButton label="Change" tooltip="To change A definition click the edit button and apply the correction where necessary" style={style} />
+                <RaisedButton label="Move" tooltip="To move A definition click and drag that word to the correct category" style={style} />
                 <RaisedButton label="Report" style={style} />
               </TableHeaderColumn>
             </TableRow>
@@ -120,11 +154,11 @@ export default class TableExampleComplex extends Component {
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}
           >
-            {wordDataTable.map( (row, index) => (
-              <TableRow key={index}>
+            {tableData.map((row, i) => (
+              <TableRow key={i}>
                 <TableRowColumn><Editbutton /></TableRowColumn>
-                <TableRowColumn>{choices.word}</TableRowColumn>
-                <TableRowColumn>{choices.definition}</TableRowColumn>
+                <TableRowColumn>{row.Word}</TableRowColumn>
+                <TableRowColumn>{row.Definition}</TableRowColumn>
               </TableRow>
               ))}
           </TableBody>

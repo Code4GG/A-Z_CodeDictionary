@@ -36,6 +36,10 @@ module.exports = {
 		})
 	},
 
+	// Character.findAll({}).then(function(result) {
+ //        return res.json(result);
+ //      });
+
 	getWords: function(req, res) {
 		db.Words.findAll({})
 		.then(data => {

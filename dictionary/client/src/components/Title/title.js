@@ -9,6 +9,8 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FontIcon from 'material-ui/FontIcon';
 import DatePicker from '../Calendar'
+import Modalpopup from '../Modal'
+
 
 class Login extends Component {
   static muiName = 'FlatButton';
@@ -55,7 +57,7 @@ class AppBarExampleComposition extends Component {
     return (
       <div>
         <AppBar
-          title="Code Dictionary"
+          title="Code Dictionary Wiki"
           iconElementLeft={<IconButton><FontIcon className="material-icons">code</FontIcon></IconButton>}
           iconElementRight={this.state.logged ? <Logged /> : <Login /> }
         />

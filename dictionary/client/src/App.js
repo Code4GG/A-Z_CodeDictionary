@@ -5,6 +5,7 @@ import TableExampleComplex from './components/Table'
 import Editbutton from './components/Editbutton'
 import Login from './components/Login'
 import Form from './components/Signup'
+import Modalpopup from './components/Modal'
 
 
 class App extends Component {
@@ -14,8 +15,9 @@ class App extends Component {
       <div className="App">
       <AppBarExampleComposition />
       <TableExampleComplex />
-      <Login />
-      <Form />
+{/*      <Login />
+      <Form />*/}
+      <Modalpopup />
       </div>
       </MuiThemeProvider>
     );

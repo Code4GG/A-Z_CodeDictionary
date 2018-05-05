@@ -28,7 +28,7 @@ export default class Editbutton extends React.Component {
     })
   }
 
-  renderRows = (field) => {
+  renderRows = (field, i) => {
     const { open } = this.state;
 
     const actions = [
@@ -46,15 +46,14 @@ export default class Editbutton extends React.Component {
     ];
 
     return (
-      <TableRow key={field.tab1}>
-        <TableRowColumn>
+
+        <div key={i}>
           <FlatButton
           label="Edit"
           style={this.style}
           /*icon={<ContentAdd/>}*/
           onClick={this.handleOpen(field.tab1)}
           />
-      </TableRowColumn>
         <Dialog
           title="Define the word at it's best"
           actions={actions}
@@ -73,16 +72,17 @@ export default class Editbutton extends React.Component {
           </Tab>
         </Tabs>
       </Dialog>
-    </TableRow>);
+      </div>
+);
   }
 
 
   render() {
     const rows = Editbutton.fields.map(this.renderRows);
     return (
-      <tbody>
-        {rows}
-      </tbody>
+
+        rows
+
     )
   }
 }
